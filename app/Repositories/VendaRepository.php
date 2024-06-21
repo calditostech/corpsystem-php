@@ -55,4 +55,40 @@ class VendaRepository {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+    public function relatorioVendas($dataInicio = null, $dataFim = null) {
+        $sql = "
+            SELECT V.id AS venda_id, V.data, C.nome AS nome_cliente, V.total
+            FROM Vendas V
+            JOIN Clientes C ON V.cliente_id = C.id
+            WHERE (:dataInicio IS NULL OR V.data >= :dataInicio)
+            AND (:dataFim IS NULL OR V.data <= :dataFim)
+            ORDER BY V.data DESC;
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':dataInicio', $dataInicio);
+        $stmt->bindParam(':dataFim', $dataFim);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function filtrarRelatorioVendas($dataInicio, $dataFim) {
+        $sql = "
+            SELECT V.id AS venda_id, V.data, C.nome AS nome_cliente, V.total
+            FROM Vendas V
+            JOIN Clientes C ON V.cliente_id = C.id
+            WHERE (:dataInicio IS NULL OR V.data >= :dataInicio)
+            AND (:dataFim IS NULL OR V.data <= :dataFim)
+            ORDER BY V.data DESC;
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':dataInicio', $dataInicio);
+        $stmt->bindParam(':dataFim', $dataFim);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 }

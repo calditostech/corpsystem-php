@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['action'])) {
         case 'cliente-index':
             $clienteController->index();
             break;
+        case 'create-form':
+            $clienteController->createForm();
+            break;
         case 'produto-index':
             $produtoController->index();
             break;

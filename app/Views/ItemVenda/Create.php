@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Cadastro de Item de Venda</h1>
-                <form action="Router.php?action=itemvenda-create" method="POST">
+                <form action="?action=itemvenda-create" method="POST">
                     <div class="form-group">
                         <label for="venda_id">ID da Venda:</label>
                         <input type="text" class="form-control" id="venda_id" name="venda_id">

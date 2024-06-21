@@ -55,4 +55,25 @@ class ProdutoRepository {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
+
+    public function consultarEstoque() {
+        $sql = "
+            SELECT nome, SUM(estoque) AS estoque
+            FROM Produtos
+            GROUP BY nome;
+        ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getByNome($nome) {
+        $sql = "SELECT * FROM Produtos WHERE nome LIKE :nome";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':nome', '%' . $nome . '%');
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }    
 }

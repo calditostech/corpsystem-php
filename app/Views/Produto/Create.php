@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Venda</title>
+    <title>Cadastro de Produto</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <h1>Cadastro de Venda</h1>
-                <form action="Router.php?action=venda-create" method="POST">
+                <h1>Cadastro de Produto</h1>
+                <form action="?action=produto-create" method="POST">
                     <div class="form-group">
-                        <label for="data">Data:</label>
-                        <input type="date" class="form-control" id="data" name="data">
+                        <label for="nome">Nome:</label>
+                        <input type="text" class="form-control" id="nome" name="nome">
                     </div>
                     <div class="form-group">
-                        <label for="cliente_id">ID do Cliente:</label>
-                        <input type="text" class="form-control" id="cliente_id" name="cliente_id">
+                        <label for="preco">Preço:</label>
+                        <input type="text" class="form-control" id="preco" name="preco">
                     </div>
                     <div class="form-group">
-                        <label for="total">Total:</label>
-                        <input type="text" class="form-control" id="total" name="total">
+                        <label for="estoque">Estoque:</label>
+                        <input type="text" class="form-control" id="estoque" name="estoque">
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </form>

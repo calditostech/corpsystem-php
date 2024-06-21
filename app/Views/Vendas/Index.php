@@ -10,14 +10,23 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Lista de Vendas</h1>
-                <a href="create.php" class="btn btn-primary mb-3">Criar Nova Venda</a>
+                <div class="mb-3">
+                    <a href="?action=cliente-index" class="btn btn-primary">Clientes</a>
+                    <a href="?action=venda-index" class="btn btn-success">Vendas</a>
+                    <a href="?action=itemvenda-index" class="btn btn-info">Item Venda</a>
+                    <a href="?action=produto-index" class="btn btn-warning">Produtos</a>
+                    <a href="?action=clientes-estoque" class="btn btn-secondary">Estoque</a>
+                    <a href="?action=clientes-relatorio" class="btn btn-dark">Relatório Vendas</a>
+                </div>
+                <a href="?action=create-form-venda" class="btn btn-primary">Criar Nova Venda</a>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Data</th>
-                            <th>ID do Cliente</th>
+                            <th>Cliente</th>
                             <th>Total</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +36,10 @@
                                 <td><?php echo $venda->data; ?></td>
                                 <td><?php echo $venda->cliente_id; ?></td>
                                 <td><?php echo $venda->total; ?></td>
+                                <td>
+                                    <a href="?action=edit-form-vendas&id=<?php echo $venda->id; ?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="?action=delete-vendas&id=<?php echo $venda->id; ?>" class="btn btn-danger btn-sm">Excluir</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
